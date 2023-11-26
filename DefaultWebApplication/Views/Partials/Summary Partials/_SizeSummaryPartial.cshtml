@@ -1,0 +1,20 @@
+﻿@model Models.View_Models.Summary_Models.SizeSummaryViewModel
+
+<div class="border border-black border-[2px] px-4 py-2">
+    <div id="photo-section" class="flex justify-center items-center mr-[12px]">
+        <div class="h-[40px] w-[40px] rounded-full border border-slate-400 bg-[rgb(34,193,195)] bg-[linear-gradient(0deg,_rgba(34,193,195,1)_0%,_rgba(253,187,45,1)_100%)]"></div>
+    </div>
+    <div id="info-section" class="flex flex-col items-center gap-[10px]">
+        <div id="upper-subsection" class="flex justify-center items-center gap-[12px]">
+            <div id="product-tag-name" class="px-2 py-1 rounded-lg bg-orange-300 text-center">
+                @Model.SizeTagName
+            </div>
+            <div id="details-button" class="px-2 py-1 rounded-lg bg-green-300 text-center italic font-semibold">
+                Details
+            </div>
+        </div>
+        <div id="bottom-subsection" class="px-3 py-2 rounded-lg font-[20px] bg-gray-300 text-center">
+            @Model.SizeName
+        </div>
+    </div>
+</div>
