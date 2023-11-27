@@ -1,4 +1,4 @@
-﻿@model Models.View_Models.Detailed_Models.SizeDetailedViewModel
+﻿@model Models.View_Models.Detailed_Models.CategoryDetailedViewModel
 
 <div class="border border-black border-[2px] px-4 py-2">
     <div id="photo-section" class="flex justify-center items-center mr-[12px]">
@@ -7,14 +7,14 @@
     <div id="info-section" class="flex flex-col items-center gap-[10px] mr-[12px]">
         <div id="upper-subsection" class="flex justify-center items-center gap-[12px]">
             <div id="product-tag-name" class="px-2 py-1 rounded-lg bg-orange-300 text-center">
-                @Model.SizeTagName
+                @Model.CategoryTagName
             </div>
             <div id="product-id" class="px-2 py-1 rounded-lg bg-blue-300 text-center italic font-semibold">
-                @Model.SizeId
+                @Model.CategoryId
             </div>
         </div>
         <div id="bottom-subsection" class="px-3 py-2 rounded-lg font-[20px] bg-gray-300 text-center">
-            @Model.SizeName
+            @Model.CategoryName
         </div>
     </div>
 </div>

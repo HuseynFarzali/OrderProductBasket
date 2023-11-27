@@ -1,7 +1,10 @@
+using DefaultWebApplication.Database;
 using DefaultWebApplication.Extensions;
+using DefaultWebApplication.Models.Setting_Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,8 +27,10 @@ namespace DefaultWebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddMvc();
             services.AddCustomServices();
+            services.BindSection<DefaultDatabaseSettings>(Configuration);
+            services.AddDatabaseContext<DefaultDatabaseSettings>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

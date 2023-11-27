@@ -7,6 +7,10 @@ using Microsoft.CodeAnalysis.Operations;
 using DefaultWebApplication.Attributes;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc;
+using DefaultWebApplication.Models.Setting_Models;
+using Microsoft.EntityFrameworkCore;
+using DefaultWebApplication.Database;
 
 namespace DefaultWebApplication.Extensions
 {
@@ -61,5 +65,16 @@ namespace DefaultWebApplication.Extensions
             configuration.GetSection(settingInstance.GetType().Name).Bind(settingInstance);
             services.AddSingleton(settingInstance);
         } 
+
+        public static void AddDatabaseContext<TSetting>(
+            this IServiceCollection services) where TSetting : DefaultDatabaseSettings, new()
+        {
+            var settings = new TSetting();
+            var _connString = settings.ConnectionString;
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseNpgsql(_connString);
+            });
+        }
     }
 }
