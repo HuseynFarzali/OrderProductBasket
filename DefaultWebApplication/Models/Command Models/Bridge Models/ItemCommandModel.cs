@@ -16,14 +16,14 @@ namespace DefaultWebApplication.Models.Command_Models.Bridge_Models
 
         [Display(Name = "Select a size:")]
         [Required]
-        public Size SizeName { get; set; }
+        public Size ItemSize { get; set; }
 
         [Display(Name = "Select a color:")]
         [Required]
-        public Color ColorName { get; set; }
+        public Color ItemColor { get; set; }
 
         [Display(Name = "Select a category:")]
         [Required]
-        public Category CategoryName { get; set; }
+        public Category ItemCategory { get; set; }
     }
 }

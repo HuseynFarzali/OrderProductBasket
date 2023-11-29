@@ -2,12 +2,13 @@
 
 namespace DefaultWebApplication.Models.Domain_Models.Bridge_Models
 {
-    public class BasketItem
+    public class BasketItem : DomainModel
     {
         #region Internal Fields
         public int BasketItemId { get; set; }
         public string Name { get; set; }
         public bool Ordered { get; set; }
+        public int Quantity { get; set; } = 0;
         #endregion
 
         #region External Dependencies
@@ -17,7 +18,7 @@ namespace DefaultWebApplication.Models.Domain_Models.Bridge_Models
         public int ItemId { get; set; }
         public Item Item { get; set; }
 
-        public int? OrderId { get; set; }
+        public int? OrderId { get; set; } 
         public Order? Order { get; set; }
         #endregion
     }

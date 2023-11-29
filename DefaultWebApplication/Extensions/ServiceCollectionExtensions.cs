@@ -64,14 +64,16 @@ namespace DefaultWebApplication.Extensions
             var settingInstance = new TSetting();
             configuration.GetSection(settingInstance.GetType().Name).Bind(settingInstance);
             services.AddSingleton(settingInstance);
-        } 
+        }
 
-        public static void AddDatabaseContext<TSetting>(
-            this IServiceCollection services) where TSetting : DefaultDatabaseSettings, new()
+        public static void AddDatabaseContext<TContext, TSetting>(
+            this IServiceCollection services,
+            IConfiguration configuration) where TSetting : DefaultDatabaseSettings, new() where TContext : DbContext
         {
             var settings = new TSetting();
+            configuration.GetSection(nameof(DefaultDatabaseSettings)).Bind(settings);
             var _connString = settings.ConnectionString;
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContext<TContext>(options =>
             {
                 options.UseNpgsql(_connString);
             });

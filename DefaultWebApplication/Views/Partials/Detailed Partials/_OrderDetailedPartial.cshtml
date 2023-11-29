@@ -1,0 +1,29 @@
+﻿@model Models.View_Models.Detailed_Models.OrderDetailedViewModel
+
+<div class="border border-black border-[2px] px-4 py-2">
+    <div id="photo-section" class="flex justify-center items-center mr-[12px]">
+        <div class="h-[40px] w-[40px] rounded-full border border-slate-400 bg-[rgb(34,193,195)] bg-[linear-gradient(0deg,_rgba(34,193,195,1)_0%,_rgba(253,187,45,1)_100%)]"></div>
+    </div>
+    <div id="info-section" class="flex flex-col items-center gap-[10px] mr-[12px]">
+        <div id="upper-subsection" class="flex justify-center items-center gap-[12px]">
+            <div id="product-tag-name" class="px-2 py-1 rounded-lg bg-orange-300 text-center">
+                Order Status: @Model.OrderStatus
+            </div>
+            <div id="product-id" class="px-2 py-1 rounded-lg bg-blue-300 text-center italic font-semibold">
+                #@Model.OrderId
+            </div>
+        </div>
+        <div id="bottom-subsection" class="px-3 py-2 rounded-lg font-[20px] bg-gray-300 text-center">
+            @Model.OrderNumber
+        </div>
+    </div>
+    <div id="price-section" class="h-full w-full m-2 rounded-lg bg-gray-300 font-bold text-center tracking-wide">
+        $@Model.OrderTotalPrice
+    </div>
+</div>
+<div id="item-models-section" class="flex flex-col gap-[12px]">
+    @foreach (var itemModel in Model.ItemModels)
+    {
+        <partial name="_ItemSummaryPartial" model="itemModel" />
+    }
+</div>

@@ -2,7 +2,7 @@
 
 namespace DefaultWebApplication.Models.Domain_Models.Bridge_Models
 {
-    public class Item
+    public class Item : DomainModel
     {
         #region Internal Fields
         public int ItemId { get; set; }
