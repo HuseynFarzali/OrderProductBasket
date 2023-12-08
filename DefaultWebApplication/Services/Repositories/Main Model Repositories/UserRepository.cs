@@ -44,7 +44,9 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task DeleteEntityCollection(Func<User, bool> criteria)
         {
-            var matchingUsers = await _context.Users.Where(u => criteria(u)).ToListAsync();
+            var matchingUsers = await _context.Users.ToListAsync();
+            matchingUsers = matchingUsers.Where(criteria).ToList();
+
             foreach (var user in matchingUsers)
             {
                 user.Deleted = true;
@@ -55,7 +57,8 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task<IEnumerable<User>> GetEntityCollection(Func<User, bool> criteria)
         {
-            var matchingUsers = await _context.Users.Where(u => criteria(u)).ToListAsync();
+            var matchingUsers = await _context.Users.ToListAsync();
+            matchingUsers = matchingUsers.Where(criteria).ToList();
 
             if (!matchingUsers.Any())
                 throw new Exception("Given criteria is not satisfied by any entity in the context.");
@@ -65,7 +68,8 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task<User> UpdateEntity(Func<User, bool> criteriaUnique, UserCommandModel command)
         {
-            var matchingUsers = await _context.Users.Where(u => criteriaUnique(u)).ToListAsync();
+            var matchingUsers = await _context.Users.ToListAsync();
+            matchingUsers = matchingUsers.Where(criteriaUnique).ToList();
 
             if (matchingUsers.Count > 1)
                 throw new Exception("Given criteria does not uniquely define a single entity from the context.");

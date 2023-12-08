@@ -1,0 +1,17 @@
+﻿@page "/category/{showDeleted=false}"
+@model DefaultWebApplication.Pages.Category.CategoryMainModel
+@{
+    Layout = "_Layout";
+}
+
+<a asp-page="categoryadd">Add New Category</a>
+
+@if (Model.CategorySummaries.Count > 0)
+{
+    foreach (var category in Model.CategorySummaries)
+    {
+        <partial name="/Views/Partials/Summary Partials/_CategorySummaryPartial.cshtml" model="category" />
+        <a asp-page="categoryupdate" asp-route-id="@category.CategoryId">Update Category</a>
+        <a asp-page="categorydelete" asp-route-id="@category.CategoryId">Delete Category</a>
+    }
+}

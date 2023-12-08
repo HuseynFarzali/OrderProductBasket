@@ -1,4 +1,6 @@
-﻿using DefaultWebApplication.Database;
+﻿using DefaultWebApplication.Attributes;
+using DefaultWebApplication.Database;
+using DefaultWebApplication.Extensions;
 using DefaultWebApplication.Models.Command_Models.Bridge_Models;
 using DefaultWebApplication.Models.Domain_Models.Bridge_Models;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
 {
+    [CustomService(Lifetime = Microsoft.Extensions.DependencyInjection.ServiceLifetime.Scoped)]
     public class BasketItemRepository : IRepository<BasketItem, BasketItemCommandModel>
     {
         #region Properties and Service Instances
@@ -48,7 +51,9 @@ namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
 
         public async Task DeleteEntityCollection(Func<BasketItem, bool> criteria)
         {
-            var matchingBasketItems = await _context.BasketItems.Where(bI => criteria(bI)).ToListAsync();
+            var matchingBasketItems = await _context.BasketItems.ToListAsync();
+            matchingBasketItems = matchingBasketItems.Where(bI => criteria(bI)).ToList();
+
             foreach (var matchingBasketItem in matchingBasketItems)
             {
                 matchingBasketItem.Deleted = true;
@@ -59,22 +64,20 @@ namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
 
         public async Task<IEnumerable<BasketItem>> GetEntityCollection(Func<BasketItem, bool> criteria)
         {
-            var matchingBasketItems = await _context.BasketItems.Where(bI => criteria(bI)).ToListAsync();
-
-            if (!matchingBasketItems.Any())
-                throw new Exception("Given criteria is not satisfied by any entity in the context.");
-
+            var matchingBasketItems = await _context.BasketItems.ToListAsync();
+            matchingBasketItems = matchingBasketItems.Where(criteria).ToList();
             return matchingBasketItems;
         }
 
         public async Task<BasketItem> UpdateEntity(Func<BasketItem, bool> criteriaUnique, BasketItemCommandModel command)
         {
-            var matchingBasketItems = await _context.BasketItems.Where(bI => criteriaUnique(bI)).ToListAsync();
+            var matchingBasketItems = await _context.BasketItems.ToListAsync();
+            matchingBasketItems = matchingBasketItems.Where(criteriaUnique).ToList();
 
-            if (!matchingBasketItems.Any())
-                throw new Exception("Given criteria is not satisfied by any entity from the context.");
-            if (matchingBasketItems.Count > 1)
+            if(matchingBasketItems.Count > 1)
                 throw new Exception("Given criteria does not uniquely define a single entity from the context.");
+            if(!matchingBasketItems.Any())
+                throw new Exception("Given criteria is not satisfied by any entity from the context.");
 
             var basketItem = matchingBasketItems.First();
 

@@ -42,7 +42,8 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task DeleteEntityCollection(Func<Size, bool> criteria)
         {
-            var matchingSizes = await _context.Sizes.Where(s => criteria(s)).ToListAsync();
+            var matchingSizes = await _context.Sizes.ToListAsync();
+            matchingSizes = matchingSizes.Where(criteria).ToList();
             foreach (var matchingSize in matchingSizes)
             {
                 matchingSize.Deleted = true;
@@ -53,17 +54,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task<IEnumerable<Size>> GetEntityCollection(Func<Size, bool> criteria)
         {
-            var matchingSizes = await _context.Sizes.Where(s => criteria(s)).ToListAsync();
-
-            if (!matchingSizes.Any())
-                throw new Exception("Given criteria is not satisfied by any entity in the context.");
+            var matchingSizes = await _context.Sizes.ToListAsync();
+            matchingSizes = matchingSizes.Where(criteria).ToList();
 
             return matchingSizes;
         }
 
         public async Task<Size> UpdateEntity(Func<Size, bool> criteriaUnique, SizeCommandModel command)
         {
-            var matchingSizes = await _context.Sizes.Where(s => criteriaUnique(s)).ToListAsync();
+            var matchingSizes = await _context.Sizes.ToListAsync();
+            matchingSizes = matchingSizes.Where(criteriaUnique).ToList();
 
             if (matchingSizes.Count > 1)
                 throw new Exception("Given criteria does not uniquely define a single entity from the context.");

@@ -42,28 +42,27 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task DeleteEntityCollection(Func<Color, bool> criteria)
         {
-            var matchingColors = await _context.Colors.Where(c => criteria(c)).ToListAsync();
+            var matchingColors = await _context.Colors.ToListAsync();
+            matchingColors = matchingColors.Where(criteria).ToList();
+
             foreach (var matchingColor in matchingColors)
             {
                 matchingColor.Deleted = true;
             }
-
             await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Color>> GetEntityCollection(Func<Color, bool> criteria)
         {
-            var matchingColors = await _context.Colors.Where(c => criteria(c)).ToListAsync();
-
-            if (matchingColors.Any())
-                throw new Exception("Given criteria is not satisfied by any entity in the context.");
-
+            var matchingColors = await _context.Colors.ToListAsync();
+            matchingColors = matchingColors.Where(criteria).ToList();
             return matchingColors;
         }
 
         public async Task<Color> UpdateEntity(Func<Color, bool> criteriaUnique, ColorCommandModel command)
         {
-            var matchingColors = await _context.Colors.Where(c => criteriaUnique(c)).ToListAsync();
+            var matchingColors = await _context.Colors.ToListAsync();
+            matchingColors = matchingColors.Where(criteriaUnique).ToList();
 
             if (matchingColors.Count > 1)
                 throw new Exception("Given criteria does not uniquely define a single entity from the context.");
@@ -82,9 +81,7 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         #region Specific Methods
         public async Task<Color> CreateColor(ColorCommandModel command)
-        {
-            return await CreateEntity(command);
-        }
+            => await CreateEntity(command);
 
         public async Task DeleteColorById(int colorId)
         {

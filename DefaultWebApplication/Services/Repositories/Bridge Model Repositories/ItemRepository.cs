@@ -1,5 +1,6 @@
 ﻿using DefaultWebApplication.Attributes;
 using DefaultWebApplication.Database;
+using DefaultWebApplication.Extensions;
 using DefaultWebApplication.Models.Command_Models.Bridge_Models;
 using DefaultWebApplication.Models.Domain_Models.Bridge_Models;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +52,9 @@ namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
 
         public async Task DeleteEntityCollection(Func<Item, bool> criteria)
         {
-            var matchingItems = await _context.Items.Where(i => criteria(i)).ToListAsync();
+            var matchingItems = await _context.Items.ToListAsync();
+            matchingItems = matchingItems.Where(criteria).ToList();
+
             foreach (var matchingItem in matchingItems)
             {
                 matchingItem.Deleted = true;
@@ -62,22 +65,20 @@ namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
 
         public async Task<IEnumerable<Item>> GetEntityCollection(Func<Item, bool> criteria)
         {
-            var matchingItems = await _context.Items.Where(i => criteria(i)).ToListAsync();
-
-            if (!matchingItems.Any())
-                throw new Exception("Given criteria is not satisfied by any entity in the context.");
-
+            var matchingItems = await _context.Items.ToListAsync();
+            matchingItems = matchingItems.Where(criteria).ToList();
             return matchingItems;
         }
 
         public async Task<Item> UpdateEntity(Func<Item, bool> criteriaUnique, ItemCommandModel command)
         {
-            var matchingItems = await _context.Items.Where(i => criteriaUnique(i)).ToListAsync();
+            var matchingItems = await _context.Items.ToListAsync();
+            matchingItems = matchingItems.Where(criteriaUnique).ToList();
 
-            if (!matchingItems.Any())
-                throw new Exception("Given criteria is not satisfied by any entity from the context.");
             if (matchingItems.Count > 1)
                 throw new Exception("Given criteria does not uniquely define a single entity from the context.");
+            if (!matchingItems.Any())
+                throw new Exception("Given criteria is not satisfied by any entity from the context.");
 
             var item = matchingItems.First();
 

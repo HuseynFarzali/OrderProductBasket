@@ -1,0 +1,14 @@
+﻿@page "/size/add"
+@model DefaultWebApplication.Pages.Size.SizeAddModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="sizeadd">
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.SizeName"></label>
+        <input asp-for="CreateCommand.SizeName" />
+        <span asp-validation-for="CreateCommand.SizeName"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

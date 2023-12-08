@@ -22,6 +22,7 @@ namespace DefaultWebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddControllersWithViews();
             services.AddCustomServices();
             services.BindSection<DefaultDatabaseSettings>(Configuration);
             services.AddDatabaseContext<AppDbContext, DefaultDatabaseSettings>(Configuration);

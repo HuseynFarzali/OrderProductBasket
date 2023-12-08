@@ -1,0 +1,14 @@
+﻿@page "/category/add"
+@model DefaultWebApplication.Pages.Category.CategoryAddModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="productadd">
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.CategoryName"></label>
+        <input asp-for="CreateCommand.CategoryName" />
+        <span asp-validation-for="CreateCommand.CategoryName"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

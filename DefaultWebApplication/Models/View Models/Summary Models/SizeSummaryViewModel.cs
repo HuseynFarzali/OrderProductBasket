@@ -2,6 +2,7 @@
 {
     public class SizeSummaryViewModel
     {
+        public int SizeId { get; set; }
         public string SizeName { get; set; }
         public string SizeTagName { get; set; }
     }

@@ -98,7 +98,6 @@ C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebAppl
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\Microsoft.Extensions.Configuration.UserSecrets.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\Microsoft.Extensions.Configuration.Xml.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
@@ -156,7 +155,6 @@ C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebAppl
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\System.Data.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\System.Diagnostics.Contracts.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\System.Diagnostics.Debug.dll
-C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\System.Diagnostics.DiagnosticSource.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\System.Diagnostics.EventLog.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\System.Diagnostics.FileVersionInfo.dll
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\refs\System.Diagnostics.Process.dll
@@ -358,3 +356,44 @@ C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebAppl
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\DefaultWebApplication.pdb
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\DefaultWebApplication.genruntimeconfig.cache
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\ref\DefaultWebApplication.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Humanizer.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Npgsql.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Detailed Partials\_CategoryDetailedPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Detailed Partials\_ColorDetailedPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Detailed Partials\_OrderDetailedPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Detailed Partials\_ProductDetailedPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Detailed Partials\_SizeDetailedViewModel.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Detailed Partials\_UserDetailedPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Summary Partials\_CategorySummaryPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Summary Partials\_ColorSummaryPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Summary Partials\_ItemSummaryPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Summary Partials\_OrderSummaryPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Summary Partials\_ProductSummaryPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Summary Partials\_SizeSummaryPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Partials\Summary Partials\_UserSummaryPartial.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Product\ProductMain.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Product\ProductAdd.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Product\ProductDelete.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Product\ProductUpdate.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Size\SizeAdd.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Size\SizeDelete.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Size\SizeMain.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Size\SizeUpdate.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Category\CategoryAdd.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Category\CategoryDelete.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Category\CategoryMain.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Category\CategoryUpdate.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Color\ColorAdd.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Color\ColorUpdate.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Color\ColorDelete.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Color\ColorMain.cshtml.g.cs

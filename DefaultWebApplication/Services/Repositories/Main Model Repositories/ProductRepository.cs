@@ -1,5 +1,6 @@
 ﻿using DefaultWebApplication.Attributes;
 using DefaultWebApplication.Database;
+using DefaultWebApplication.Extensions;
 using DefaultWebApplication.Models.Command_Models;
 using DefaultWebApplication.Models.Command_Models.Main_Models;
 using DefaultWebApplication.Models.Domain_Models.Main_Models;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
@@ -42,7 +44,9 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task DeleteEntityCollection(Func<Product, bool> criteria)
         {
-            var matchingProducts = await _context.Products.Where(p => criteria(p)).ToListAsync();
+            var matchingProducts = await _context.Products.ToListAsync();
+            matchingProducts = matchingProducts.Where(criteria).ToList();
+
             foreach (var matchingProduct in matchingProducts)
             {
                 matchingProduct.Deleted = true;
@@ -53,17 +57,15 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         public async Task<IEnumerable<Product>> GetEntityCollection(Func<Product, bool> criteria)
         {
-            var matchingProducts = await _context.Products.Where(p => criteria(p)).ToListAsync();
-
-            if (!matchingProducts.Any())
-                throw new Exception("Given criteria is not satisfied by any entity in the context.");
-
+            var matchingProducts = await _context.Products.ToListAsync();
+            matchingProducts = matchingProducts.Where(p => criteria(p)).ToList();
             return matchingProducts;
         }
 
         public async Task<Product> UpdateEntity(Func<Product, bool> criteriaUnique, ProductCommandModel command)
         {
-            var matchingProducts = await _context.Products.Where(p => criteriaUnique(p)).ToListAsync();
+            var matchingProducts = await _context.Products.ToListAsync();
+            matchingProducts = matchingProducts.Where(criteriaUnique).ToList();
 
             if (matchingProducts.Count > 1)
                 throw new Exception("Given criteria does not uniquely define a single entity from the context.");
@@ -84,9 +86,7 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
         #region Specific Methods
         public async Task<Product> CreateProduct(ProductCommandModel command)
-        {
-            return await CreateEntity(command);
-        }
+            => await CreateEntity(command);
         
         public async Task DeleteProductById(int productId)
         {
@@ -100,9 +100,7 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
         }
 
         public async Task<Product> UpdateProductById(int productId, ProductCommandModel command)
-        {
-            return await UpdateEntity(product => product.ProductId == productId, command);
-        }
+            => await UpdateEntity(product => product.ProductId == productId, command);
         #endregion
 
         #region Helper Methods

@@ -1,0 +1,14 @@
+﻿@page "/color/add"
+@model DefaultWebApplication.Pages.Color.ColorAddModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="productadd">
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.ColorName"></label>
+        <input asp-for="CreateCommand.ColorName" />
+        <span asp-validation-for="CreateCommand.ColorName"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

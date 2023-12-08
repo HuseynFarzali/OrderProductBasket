@@ -1,0 +1,17 @@
+﻿@page "/size/{showDeleted=false}"
+@model DefaultWebApplication.Pages.Sizes.SizeMainModel
+@{
+    Layout = "_Layout";
+}
+
+<a asp-page="sizeadd">Add New Size</a>
+
+@if (Model.SizeSummaries.Count > 0)
+{
+    foreach (var size in Model.SizeSummaries)
+    {
+        <partial name="/Views/Partials/Summary Partials/_SizeSummaryPartial.cshtml" model="size" />
+        <a asp-page="sizeupdate" asp-route-id="@size.SizeId">Update Size</a>
+        <a asp-page="sizedelete" asp-route-id="@size.SizeId">Delete Size</a>
+    }
+}

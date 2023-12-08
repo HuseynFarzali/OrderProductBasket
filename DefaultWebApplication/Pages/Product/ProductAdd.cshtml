@@ -1,0 +1,24 @@
+﻿@page "/product/add"
+@model DefaultWebApplication.Pages.Product.ProductAddModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="productadd">
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.ProductName"></label>
+        <input asp-for="CreateCommand.ProductName" />
+        <span asp-validation-for="CreateCommand.ProductName"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.ProductPrice"></label>
+        <input asp-for="CreateCommand.ProductPrice" />
+        <span asp-validation-for="CreateCommand.ProductPrice"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.ProductRating"></label>
+        <input asp-for="CreateCommand.ProductRating" />
+        <span asp-validation-for="CreateCommand.ProductRating"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,14 @@
+﻿@page "/category/update/{id}"
+@model DefaultWebApplication.Pages.Category.CategoryUpdateModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="categoryupdate">
+    <div form-group class="mb-3">
+        <label asp-for="UpdateModel.CategoryName"></label>
+        <input asp-for="UpdateModel.CategoryName" value="@Model.ShowModel.CategoryName" />
+        <span asp-validation-for="UpdateModel.CategoryName"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

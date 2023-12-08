@@ -1,0 +1,19 @@
+﻿@page "/product/{showDeleted=false}"
+@model DefaultWebApplication.Pages.Product.ProductMainModel
+@{
+    Layout = "_Layout";
+}
+
+<a asp-page="productadd">Add New Product</a>
+
+@if (Model.ProductSummaries.Count > 0) {
+    foreach (var product in Model.ProductSummaries)
+    {
+        <partial name="/Views/Partials/Summary Partials/_ProductSummaryPartial.cshtml" model="product" />
+        <a asp-page="productupdate" asp-route-id="@product.ProductId">Update Product</a>
+        <a asp-page="productdelete" asp-route-id="@product.ProductId">Delete Product</a>
+    }
+}
+else {
+    <p class="text-red-600 text-3">No any product in the given context.</p>
+}

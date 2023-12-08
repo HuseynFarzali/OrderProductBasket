@@ -2,6 +2,7 @@
 {
     public class CategorySummaryViewModel
     {
+        public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryTagName { get; set; }
     }

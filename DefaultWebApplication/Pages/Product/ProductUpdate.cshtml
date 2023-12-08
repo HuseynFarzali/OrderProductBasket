@@ -1,0 +1,24 @@
+﻿@page "/product/update/{id}"
+@model DefaultWebApplication.Pages.Product.ProductUpdateModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="productupdate">
+    <div form-group class="mb-3">
+        <label asp-for="UpdateModel.ProductName"></label>
+        <input asp-for="UpdateModel.ProductName" value="@Model.ShowModel.ProductName" />
+        <span asp-validation-for="UpdateModel.ProductName"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="UpdateModel.ProductPrice"></label>
+        <input asp-for="UpdateModel.ProductPrice" value="@Model.ShowModel.ProductPrice" />
+        <span asp-validation-for="UpdateModel.ProductPrice"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="UpdateModel.ProductRating"></label>
+        <input asp-for="UpdateModel.ProductRating" value="@Model.ShowModel.ProductRating" />
+        <span asp-validation-for="UpdateModel.ProductRating"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

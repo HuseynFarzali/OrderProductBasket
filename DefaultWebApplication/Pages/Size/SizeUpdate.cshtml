@@ -1,0 +1,14 @@
+﻿@page "/size/update/{id}"
+@model DefaultWebApplication.Pages.Size.SizeUpdateModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="sizeupdate">
+    <div form-group class="mb-3">
+        <label asp-for="UpdateModel.SizeName"></label>
+        <input asp-for="UpdateModel.SizeName" value="@Model.ShowModel.SizeName" />
+        <span asp-validation-for="UpdateModel.SizeName"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>
