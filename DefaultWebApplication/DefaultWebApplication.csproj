@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Exposed\" />
+    <Folder Include="Pages\Client\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
