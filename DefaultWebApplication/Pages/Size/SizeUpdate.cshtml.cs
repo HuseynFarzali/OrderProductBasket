@@ -23,24 +23,30 @@ namespace DefaultWebApplication.Pages.Size
         public SizeCommandModel UpdateModel { get; set; }
 
         public async Task OnGet([FromRoute] int id)
+         => await PopulateShowModel(id);
+
+        public async Task<IActionResult> OnPost([FromRoute] int id)
         {
-            var size = await _repository.GetSizeById(id);
+            if (!ModelState.IsValid)
+            {
+                await PopulateShowModel(id);
+                return Page();
+            }
+
+            await _repository.UpdateSizeById(id, UpdateModel);
+
+            return RedirectToPage("sizemain");
+        }
+
+        private async Task PopulateShowModel(int sizeId)
+        {
+            var size = await _repository.GetSizeById(sizeId);
             ShowModel = new SizeDetailedViewModel
             {
                 SizeId = size.SizeId,
                 SizeName = size.Name,
                 SizeTagName = size.TagName
             };
-        }
-
-        public async Task<IActionResult> OnPost([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-                return Page();
-
-            await _repository.UpdateSizeById(id, UpdateModel);
-
-            return RedirectToPage("sizemain");
         }
     }
 }

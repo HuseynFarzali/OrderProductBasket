@@ -24,8 +24,10 @@ namespace DefaultWebApplication.Pages.Product
 
         public async Task<IActionResult> OnPost()
         {
-            await _productRepository.CreateProduct(CreateCommand);
+            if (!ModelState.IsValid)
+                return Page();
 
+            await _productRepository.CreateProduct(CreateCommand);
             return RedirectToPage("productmain");
         }
     }

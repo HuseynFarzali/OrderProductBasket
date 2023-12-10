@@ -1,4 +1,5 @@
-﻿using DefaultWebApplication.Models.Domain_Models.Main_Models;
+﻿using DefaultWebApplication.Models.Command_Models.Main_Models;
+using DefaultWebApplication.Models.Domain_Models.Main_Models;
 using Microsoft.AspNetCore.Cors;
 using System.ComponentModel.DataAnnotations;
 

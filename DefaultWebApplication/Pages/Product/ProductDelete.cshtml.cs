@@ -14,10 +14,9 @@ namespace DefaultWebApplication.Pages.Product
             _productRepository = productRepository;
         }
 
-        public async Task<IActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGet([FromRoute] int id)
         {
             await _productRepository.DeleteProductById(id);
-
             return RedirectToPage("productmain");
         }
     }

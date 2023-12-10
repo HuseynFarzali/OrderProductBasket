@@ -32,6 +32,7 @@ namespace DefaultWebApplication.Pages.Sizes
                         SizeId = size.SizeId,
                         SizeName = size.Name,
                         SizeTagName = size.TagName,
+                        SizeDeleted = size.Deleted,
                     });
         }
     }

@@ -22,8 +22,23 @@ namespace DefaultWebApplication.Pages.Product
         public ProductCommandModel UpdateModel { get; set; }
 
         public async Task OnGet([FromRoute] int id)
+            => await PopulateShowModel(id);
+
+        public async Task<IActionResult> OnPost([FromRoute] int id)
         {
-            var product = await _repository.GetProductById(id);
+            if (!ModelState.IsValid)
+            {
+                await PopulateShowModel(id);
+                return Page();
+            }
+
+            await _repository.UpdateProductById(id, UpdateModel);
+            return RedirectToPage("productmain");
+        }
+
+        private async Task PopulateShowModel(int productId)
+        {
+            var product = await _repository.GetProductById(productId);
             ShowModel = new ProductDetailedViewModel
             {
                 ProductName = product.Name,
@@ -32,18 +47,6 @@ namespace DefaultWebApplication.Pages.Product
                 ProductTagName = product.TagName,
                 ProductId = product.ProductId
             };
-        }
-
-        public async Task<IActionResult> OnPost([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            await _repository.UpdateProductById(id, UpdateModel);
-
-            return RedirectToPage("productmain");
         }
     }
 }

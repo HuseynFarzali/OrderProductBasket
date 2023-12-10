@@ -15,8 +15,8 @@ namespace DefaultWebApplication.Models.Command_Models.Main_Models
         [StringLength(3, MinimumLength = 3)]
         public string? ColorTagName { get; set; }
 
-        [RGBCode(ErrorMessage = "{0} is not in valid format of {1}")]
         [Required]
-        public string RgbCode { get; set; }
+        [RGBCode(ErrorMessage = "{0} is not in valid format of {1}")]
+        public string ColorRgbCode { get; set; }
     }
 }

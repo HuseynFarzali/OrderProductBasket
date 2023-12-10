@@ -12,6 +12,8 @@ namespace DefaultWebApplication.Attributes
             try
             {
                 rgbCode = (string)value;
+                if (rgbCode is null)
+                    return false;
             }
             catch(Exception)
             {

@@ -24,6 +24,9 @@ namespace DefaultWebApplication.Pages.Category
 
         public async Task<IActionResult> OnPost()
         {
+            if (!ModelState.IsValid)
+                return Page();
+
             await _repository.CreateCategory(CreateCommand);
             return RedirectToPage("categorymain");
         }

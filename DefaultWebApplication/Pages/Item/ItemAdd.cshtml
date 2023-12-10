@@ -1,0 +1,29 @@
+﻿@page "/item/add"
+@model DefaultWebApplication.Pages.Item.ItemAddModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="itemadd">
+    <div form-group class="mb-3">
+        <select asp-for="BoundInputModel.ProductName" asp-items="@Model.AvailableProducts">
+            <option>Not Selected</option>
+        </select>
+    </div>
+    <div form-group class="mb-3">
+        <select asp-for="BoundInputModel.ColorName" asp-items="@Model.AvailableColors">
+            <option>Not Selected</option>
+        </select>
+    </div>
+    <div form-group class="mb-3">
+        <select asp-for="BoundInputModel.SizeName" asp-items="@Model.AvailableSizes">
+            <option>Not Selected</option>
+        </select>
+    </div>
+    <div form-group class="mb-3">
+        <select asp-for="BoundInputModel.CategoryName" asp-items="@Model.AvailableCategories">
+            <option>Not Selected</option>
+        </select>
+    </div>
+    <button type="submit">Submit</button>
+</form>

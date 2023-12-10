@@ -39,5 +39,11 @@ namespace DefaultWebApplication.Attributes
 
             return true;
         }
+
+        public override string FormatErrorMessage(string name)
+        {
+            return string.Format(ErrorMessage, name, $"[lengthRequired:{RequiredLength} & capitalLetterRequired:{CapitalLetterRequired}]");
+        }
     }
+
 }

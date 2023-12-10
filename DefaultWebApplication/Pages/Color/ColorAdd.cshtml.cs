@@ -24,6 +24,9 @@ namespace DefaultWebApplication.Pages.Color
 
         public async Task<IActionResult> OnPost()
         {
+            if (!ModelState.IsValid)
+                return Page();
+
             await _repository.CreateColor(CreateCommand);
             return RedirectToPage("colormain");
         }

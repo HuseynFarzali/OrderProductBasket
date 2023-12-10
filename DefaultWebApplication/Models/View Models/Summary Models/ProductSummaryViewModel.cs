@@ -6,5 +6,6 @@
         public string ProductName { get; set; }
         public string ProductTagName { get; set; }
         public decimal ProductPrice { get; set; }
+        public bool ProductDeleted { get; set; }
     }
 }

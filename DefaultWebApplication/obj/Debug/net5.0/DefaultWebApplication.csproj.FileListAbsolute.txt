@@ -397,3 +397,11 @@ C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebAppl
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Color\ColorUpdate.cshtml.g.cs
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Color\ColorDelete.cshtml.g.cs
 C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Color\ColorMain.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\User\UserAdd.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\User\UserMain.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\User\UserDelete.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\User\UserUpdate.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Item\ItemAdd.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Item\ItemDelete.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Item\ItemMain.cshtml.g.cs
+C:\Users\99450\Desktop\BackEnd_Code_Academy\DefaultWebApplication\DefaultWebApplication\obj\Debug\net5.0\Razor\Pages\Item\ItemUpdate.cshtml.g.cs

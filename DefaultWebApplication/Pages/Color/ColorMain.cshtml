@@ -1,4 +1,29 @@
-﻿@page
+﻿@page "/color/{showDeleted=false}"
 @model DefaultWebApplication.Pages.Color.ColorMainModel
 @{
+    Layout = "_Layout";
+}
+
+<a asp-page="coloradd">Add New Color</a>
+
+@if (Model.ColorSummaries.Count > 0)
+{
+    foreach (var color in Model.ColorSummaries)
+    {
+        <partial name="/Views/Partials/Summary Partials/_ColorSummaryPartial.cshtml" model="color" />
+        @if (color.ColorDeleted is false)
+        {
+            <a asp-page="colorupdate" asp-route-id="@color.ColorId">Update Product</a>
+            <a asp-page="colordelete" asp-route-id="@color.ColorId">Delete Product</a>
+        }
+        else
+        {
+            <p class="text-red-600 text-[12px]">This entity is deleted</p>
+        }
+
+    }
+}
+else
+{
+    <p class="text-red-600 text-3">No any product in the given context.</p>
 }

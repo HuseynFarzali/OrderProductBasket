@@ -22,10 +22,7 @@ namespace DefaultWebApplication.Pages.Product
 
         public async Task OnGet(bool showDeleted)
         {
-            var products = await _productRepository.GetEntityCollection(p =>
-            {
-                return true;
-            });
+            var products = await _productRepository.GetEntityCollection(p => true);
 
             if (!showDeleted)
                 products = products.Where(p => p.Deleted == false);
@@ -38,6 +35,7 @@ namespace DefaultWebApplication.Pages.Product
                         ProductName = product.Name,
                         ProductPrice = product.Price,
                         ProductTagName = product.TagName,
+                        ProductDeleted = product.Deleted,
                     });
         }       
     }

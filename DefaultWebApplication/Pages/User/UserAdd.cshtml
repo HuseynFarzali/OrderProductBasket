@@ -1,0 +1,34 @@
+﻿@page "/user/add"
+@model DefaultWebApplication.Pages.User.UserAddModel
+@{
+    Layout = "_Layout";
+}
+
+<form asp-page="useradd">
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.UserName"></label>
+        <input asp-for="CreateCommand.UserName" />
+        <span asp-validation-for="CreateCommand.UserName"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.UserSurname"></label>
+        <input asp-for="CreateCommand.UserSurname" />
+        <span asp-validation-for="CreateCommand.UserSurname"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.UserAge"></label>
+        <input asp-for="CreateCommand.UserAge" />
+        <span asp-validation-for="CreateCommand.UserAge"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.UserEmail"></label>
+        <input asp-for="CreateCommand.UserEmail" />
+        <span asp-validation-for="CreateCommand.UserEmail"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="CreateCommand.UserPassword"></label>
+        <input asp-for="CreateCommand.UserPassword" />
+        <span asp-validation-for="CreateCommand.UserPassword"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

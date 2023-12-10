@@ -35,6 +35,7 @@ namespace DefaultWebApplication.Pages.Category
                         CategoryId = category.CategoryId,
                         CategoryName = category.Name,
                         CategoryTagName = category.TagName,
+                        CategoryDeleted = category.Deleted,
                     });
             }
         }

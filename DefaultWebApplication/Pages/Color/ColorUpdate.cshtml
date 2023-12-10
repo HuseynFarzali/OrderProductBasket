@@ -1,4 +1,19 @@
-﻿@page
+﻿@page "/color/update/{id}"
 @model DefaultWebApplication.Pages.Color.ColorUpdateModel
 @{
+    Layout = "_Layout";
 }
+
+<form asp-page="colorupdate">
+    <div form-group class="mb-3">
+        <label asp-for="UpdateCommand.ColorName"></label>
+        <input asp-for="UpdateCommand.ColorName" value="@Model.ShowModel.ColorName" />
+        <span asp-validation-for="UpdateCommand.ColorName"></span>
+    </div>
+    <div form-group class="mb-3">
+        <label asp-for="UpdateCommand.ColorRgbCode"></label>
+        <input asp-for="UpdateCommand.ColorRgbCode" value="@Model.ShowModel.ColorRgbCode" />
+        <span asp-validation-for="UpdateCommand.ColorRgbCode"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

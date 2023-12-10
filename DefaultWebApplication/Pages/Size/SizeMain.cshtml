@@ -11,7 +11,14 @@
     foreach (var size in Model.SizeSummaries)
     {
         <partial name="/Views/Partials/Summary Partials/_SizeSummaryPartial.cshtml" model="size" />
-        <a asp-page="sizeupdate" asp-route-id="@size.SizeId">Update Size</a>
-        <a asp-page="sizedelete" asp-route-id="@size.SizeId">Delete Size</a>
+        @if (size.SizeDeleted is false)
+        {
+            <a asp-page="sizeupdate" asp-route-id="@size.SizeId">Update Size</a>
+            <a asp-page="sizedelete" asp-route-id="@size.SizeId">Delete Size</a>
+        }
+        else
+        {
+            <p class="text-red-600 text-[12px]">This entity is deleted.</p>
+        }
     }
 }

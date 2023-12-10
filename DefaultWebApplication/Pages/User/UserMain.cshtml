@@ -1,0 +1,28 @@
+﻿@page "/user/{showDeleted=false}"
+@model DefaultWebApplication.Pages.User.UserMainModel
+@{
+    Layout = "_Layout";
+}
+
+<a asp-page="useradd">Add New User</a>
+
+@if (Model.UserSummaries.Count > 0)
+{
+    foreach (var user in Model.UserSummaries)
+    {
+        <partial name="/Views/Partials/Summary Partials/_UserSummaryPartial.cshtml" model="user" />
+        @if (user.UserDeleted is false)
+        {
+            <a asp-page="userupdate" asp-route-id="@user.UserId">Update Product</a>
+            <a asp-page="userdelete" asp-route-id="@user.UserId">Delete Product</a>
+        }
+        else
+        {
+            <p class="text-red-600 text-[12px]">This entity is deleted.</p>
+        }
+    }
+}
+else
+{
+    <p class="text-red-600 text-3">No any user in the given context.</p>
+}

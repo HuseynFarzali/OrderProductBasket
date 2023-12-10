@@ -31,7 +31,8 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             var color = new Color
             {
                 Name = command.ColorName,
-                TagName = command.ColorTagName ?? GenerateColorTagName(command)
+                TagName = command.ColorTagName ?? GenerateColorTagName(command),
+                RgbCode = command.ColorRgbCode
             };
 
             await _context.Colors.AddAsync(color);
@@ -73,6 +74,7 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
 
             color.Name = command.ColorName;
             color.TagName = command.ColorTagName ?? GenerateColorTagName(command);
+            color.RgbCode = command.ColorRgbCode;
 
             await _context.SaveChangesAsync();
             return color;

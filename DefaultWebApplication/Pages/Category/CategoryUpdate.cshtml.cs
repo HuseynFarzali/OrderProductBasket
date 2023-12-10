@@ -23,24 +23,30 @@ namespace DefaultWebApplication.Pages.Category
         public CategoryCommandModel UpdateModel { get; set; }
 
         public async Task OnGet([FromRoute] int id)
+            => await PopulateShowModel(id);
+
+        public async Task<IActionResult> OnPost([FromRoute] int id)
         {
-            var category = await _repository.GetCategoryById(id);
+            if (!ModelState.IsValid)
+            {
+                await PopulateShowModel(id);
+                return Page();
+            }            
+
+            await _repository.UpdateCategoryById(id, UpdateModel);
+
+            return RedirectToPage("categorymain");
+        }
+
+        private async Task PopulateShowModel(int categoryId)
+        {
+            var category = await _repository.GetCategoryById(categoryId);
             ShowModel = new CategoryDetailedViewModel
             {
                 CategoryId = category.CategoryId,
                 CategoryName = category.Name,
                 CategoryTagName = category.TagName,
             };
-        }
-
-        public async Task<IActionResult> OnPost([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-                return Page();
-
-            await _repository.UpdateCategoryById(id, UpdateModel);
-
-            return RedirectToPage("categorymain");
         }
     }
 }

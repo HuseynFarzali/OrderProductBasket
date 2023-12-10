@@ -24,6 +24,9 @@ namespace DefaultWebApplication.Pages.Size
 
         public async Task<IActionResult> OnPost()
         {
+            if (!ModelState.IsValid)
+                return Page();
+
             await _repository.CreateSize(CreateCommand);
             return RedirectToPage("sizemain");
         }

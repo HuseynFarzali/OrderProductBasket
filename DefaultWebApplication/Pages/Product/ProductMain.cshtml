@@ -10,8 +10,15 @@
     foreach (var product in Model.ProductSummaries)
     {
         <partial name="/Views/Partials/Summary Partials/_ProductSummaryPartial.cshtml" model="product" />
-        <a asp-page="productupdate" asp-route-id="@product.ProductId">Update Product</a>
-        <a asp-page="productdelete" asp-route-id="@product.ProductId">Delete Product</a>
+        @if (product.ProductDeleted is false)
+        {
+            <a asp-page="productupdate" asp-route-id="@product.ProductId">Update Product</a>
+            <a asp-page="productdelete" asp-route-id="@product.ProductId">Delete Product</a>
+        }
+        else
+        {
+            <p class="text-red-600 text-[12px]">This entity is deleted.</p>
+        }
     }
 }
 else {

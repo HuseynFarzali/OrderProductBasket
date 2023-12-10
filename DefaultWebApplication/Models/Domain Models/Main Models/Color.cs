@@ -10,6 +10,7 @@ namespace DefaultWebApplication.Models.Domain_Models.Main_Models
         #region Internal Fields
         public int ColorId { get; set; }
         public string Name { get; set; }
+        public string RgbCode { get; set; }
         public string TagName { get; set; }
         #endregion
 

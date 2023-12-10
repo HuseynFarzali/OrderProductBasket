@@ -142,6 +142,9 @@ namespace DefaultWebApplication.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
+                    b.Property<string>("RgbCode")
+                        .HasColumnType("text");
+
                     b.Property<string>("TagName")
                         .HasColumnType("text");
 

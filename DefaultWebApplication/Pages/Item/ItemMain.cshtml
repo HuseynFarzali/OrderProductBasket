@@ -1,0 +1,27 @@
+﻿@page "/item"
+@model DefaultWebApplication.Pages.Item.ItemMainModel
+@{
+}
+
+<a asp-page="itemadd">Add New Item</a>
+
+@if (Model.ItemSummaries.Count > 0)
+{
+    foreach (var item in Model.ItemSummaries)
+    {
+        <partial name="/Views/Partials/Summary Partials/_ItemSummaryPartial.cshtml" model="item" />
+        @if (item.ItemDeleted is false)
+        {
+            <a asp-page="itemupdate" asp-route-id="@item.ItemId">Update Product</a>
+            <a asp-page="itemdelete" asp-route-id="@item.ItemId">Delete Product</a>
+        }
+        else
+        {
+            <p class="text-red-600 text-[12px]">This entity is deleted.</p>
+        }
+    }
+}
+else
+{
+    <p class="text-red-600 text-3">No any item in the given context.</p>
+}
