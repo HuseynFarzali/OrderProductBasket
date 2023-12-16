@@ -55,11 +55,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetEntityCollection(Func<Product, bool> criteria)
+        public async Task<IEnumerable<Product>> GetEntityCollection(
+            Func<Product, bool> criteria, bool includeItemList = false)
         {
-            var matchingProducts = await _context.Products.ToListAsync();
-            matchingProducts = matchingProducts.Where(p => criteria(p)).ToList();
-            return matchingProducts;
+            var matchingProductsQueryable = _context.Products.AsQueryable();
+
+            if (includeItemList is true)
+                matchingProductsQueryable = matchingProductsQueryable.Include(p => p.ItemList);
+
+            var matchingProducts = await matchingProductsQueryable.ToListAsync();
+            return matchingProductsQueryable.Where(criteria);
         }
 
         public async Task<Product> UpdateEntity(Func<Product, bool> criteriaUnique, ProductCommandModel command)
@@ -93,9 +98,10 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await DeleteEntityCollection(product => product.ProductId == productId);
         }
 
-        public async Task<Product> GetProductById(int productId)
+        public async Task<Product> GetProductById(int productId, bool includeItemList = false)
         {
-            var enumerableProductList = await GetEntityCollection(product => product.ProductId == productId);
+            var enumerableProductList = await GetEntityCollection(
+                product => product.ProductId == productId, includeItemList);
             return enumerableProductList.First();
         }
 

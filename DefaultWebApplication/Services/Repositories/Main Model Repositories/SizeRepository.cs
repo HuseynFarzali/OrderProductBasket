@@ -52,12 +52,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Size>> GetEntityCollection(Func<Size, bool> criteria)
+        public async Task<IEnumerable<Size>> GetEntityCollection(
+            Func<Size, bool> criteria, bool includeItemList = false)
         {
-            var matchingSizes = await _context.Sizes.ToListAsync();
-            matchingSizes = matchingSizes.Where(criteria).ToList();
+            var matchingSizesQueryable = _context.Sizes.AsQueryable();
 
-            return matchingSizes;
+            if (includeItemList is true)
+                matchingSizesQueryable = matchingSizesQueryable.Include(s => s.ItemList);
+
+            var matchingSizes = await matchingSizesQueryable.ToListAsync();
+            return matchingSizes.Where(criteria);
         }
 
         public async Task<Size> UpdateEntity(Func<Size, bool> criteriaUnique, SizeCommandModel command)
@@ -91,9 +95,9 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await DeleteEntityCollection(size => size.SizeId == sizeId);
         }
         
-        public async Task<Size> GetSizeById(int sizeId)
+        public async Task<Size> GetSizeById(int sizeId, bool includeItemList = false)
         {
-            var enumerableSizeList = await GetEntityCollection(size => size.SizeId == sizeId);
+            var enumerableSizeList = await GetEntityCollection(size => size.SizeId == sizeId, includeItemList);
             return enumerableSizeList.First();
         }
 

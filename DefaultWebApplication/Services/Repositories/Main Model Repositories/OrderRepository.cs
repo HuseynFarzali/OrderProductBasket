@@ -54,14 +54,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Order>> GetEntityCollection(Func<Order, bool> criteria)
+        public async Task<IEnumerable<Order>> GetEntityCollection(
+            Func<Order, bool> criteria, bool includeBasketItemList = false)
         {
-            var matchingOrders = await _context.Orders.Where(o => criteria(o)).ToListAsync();
+            var matchingOrderQueryable = _context.Orders.AsQueryable();
 
-            if (!matchingOrders.Any())
-                throw new Exception("Given criteria is not satisfied by any entity in the context.");
+            if (includeBasketItemList is true)
+                matchingOrderQueryable = matchingOrderQueryable.Include(c => c.BasketItemList);
 
-            return matchingOrders;
+            var matchingOrders = await matchingOrderQueryable.ToListAsync();
+            return matchingOrders.Where(criteria);
         }
 
         public async Task<Order> UpdateEntity(Func<Order, bool> criteriaUnique, OrderStatus status)
@@ -94,9 +96,9 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await DeleteEntityCollection(order => order.OrderId == orderId);
         }
 
-        public async Task<Order> GetOrderById(int orderId)
+        public async Task<Order> GetOrderById(int orderId, bool includeBasketItemList = false)
         {
-            var enumerableOrderList = await GetEntityCollection(order => order.OrderId == orderId);
+            var enumerableOrderList = await GetEntityCollection(order => order.OrderId == orderId, includeBasketItemList);
             return enumerableOrderList.First();
         }
 

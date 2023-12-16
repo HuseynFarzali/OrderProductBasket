@@ -1,8 +1,10 @@
 using DefaultWebApplication.Database;
 using DefaultWebApplication.Extensions;
+using DefaultWebApplication.Models.Account_Models;
 using DefaultWebApplication.Models.Setting_Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,9 @@ namespace DefaultWebApplication
             services.AddCustomServices();
             services.BindSection<DefaultDatabaseSettings>(Configuration);
             services.AddDatabaseContext<AppDbContext, DefaultDatabaseSettings>(Configuration);
+            services.AddAuthentication("Cookies").AddCookie("Cookies");
+            services.AddHttpContextAccessor();
+            //services.AddAuthorizationService<AppDbContext, AuthUser>(true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,11 +52,13 @@ namespace DefaultWebApplication
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

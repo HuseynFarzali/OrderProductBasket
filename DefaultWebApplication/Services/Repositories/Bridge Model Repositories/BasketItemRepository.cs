@@ -52,7 +52,7 @@ namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
         public async Task DeleteEntityCollection(Func<BasketItem, bool> criteria)
         {
             var matchingBasketItems = await _context.BasketItems.ToListAsync();
-            matchingBasketItems = matchingBasketItems.Where(bI => criteria(bI)).ToList();
+            matchingBasketItems = matchingBasketItems.Where(criteria).ToList();
 
             foreach (var matchingBasketItem in matchingBasketItems)
             {
@@ -62,7 +62,8 @@ namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<BasketItem>> GetEntityCollection(Func<BasketItem, bool> criteria)
+        public async Task<IEnumerable<BasketItem>> GetEntityCollection(
+            Func<BasketItem, bool> criteria, bool includeItemList = false)
         {
             var matchingBasketItems = await _context.BasketItems.ToListAsync();
             matchingBasketItems = matchingBasketItems.Where(criteria).ToList();

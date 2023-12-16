@@ -21,6 +21,6 @@
 <div id="item-models-section" class="flex flex-col gap-[12px]">
     @foreach (var itemModel in Model.ItemModels)
     {
-        <partial name="_ItemSummaryPartial" model="itemModel" />
+        <partial name="/Views/Partials/Summary Partials/_ItemSummaryPartial.cshtml" model="itemModel" />
     }
 </div>

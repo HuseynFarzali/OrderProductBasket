@@ -63,7 +63,7 @@ namespace DefaultWebApplication.Services.Repositories.Bridge_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Item>> GetEntityCollection(Func<Item, bool> criteria)
+        public async Task<IEnumerable<Item>> GetEntityCollection(Func<Item, bool> criteria, bool includeItemList = false)
         {
             var matchingItems = await _context.Items.ToListAsync();
             matchingItems = matchingItems.Where(criteria).ToList();

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace DefaultWebApplication.Models.View_Models.Detailed_Models
 {
-    public class CategoryDetailedViewModel
+    public class CategoryDetailedViewModel : DetailedViewModel
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryTagName { get; set; }
-        public IList<ItemSummaryViewModel> ItemModels { get; set; }
+        public List<ItemSummaryViewModel> ItemModels { get; set; }
     }
 }

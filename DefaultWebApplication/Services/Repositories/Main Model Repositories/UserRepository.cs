@@ -55,15 +55,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<User>> GetEntityCollection(Func<User, bool> criteria)
+        public async Task<IEnumerable<User>> GetEntityCollection(
+            Func<User, bool> criteria, bool includeBasketItemList = false)
         {
-            var matchingUsers = await _context.Users.ToListAsync();
-            matchingUsers = matchingUsers.Where(criteria).ToList();
+            var matchingUsersQueryable = _context.Users.AsQueryable();
 
-            if (!matchingUsers.Any())
-                throw new Exception("Given criteria is not satisfied by any entity in the context.");
+            if (includeBasketItemList is true)
+                matchingUsersQueryable = matchingUsersQueryable.Include(u => u.BasketItemList);
 
-            return matchingUsers;
+            var matchingUsers = await matchingUsersQueryable.ToListAsync();
+            return matchingUsers.Where(criteria);
         }
 
         public async Task<User> UpdateEntity(Func<User, bool> criteriaUnique, UserCommandModel command)
@@ -99,9 +100,9 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await DeleteEntityCollection(user => user.UserId == userId);
         }
 
-        public async Task<User> GetUserById(int userId)
+        public async Task<User> GetUserById(int userId, bool includeBasketItemList = false)
         {
-            var enumerableUserList = await GetEntityCollection(user => user.UserId == userId);
+            var enumerableUserList = await GetEntityCollection(user => user.UserId == userId, includeBasketItemList);
             return enumerableUserList.First();
         }
 

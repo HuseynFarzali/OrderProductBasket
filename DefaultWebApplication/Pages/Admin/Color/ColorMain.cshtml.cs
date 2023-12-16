@@ -1,3 +1,5 @@
+using DefaultWebApplication.Extensions;
+using DefaultWebApplication.Models.View_Models.Detailed_Models;
 using DefaultWebApplication.Models.View_Models.Summary_Models;
 using DefaultWebApplication.Services.Repositories.Main_Model_Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +23,7 @@ namespace DefaultWebApplication.Pages.Color
 
         public async Task OnGet(bool showDeleted)
         {
-            var colors = await _repository.GetEntityCollection(c => true);
+            var colors = await _repository.GetEntityCollection(c => true, true);
 
             if (!showDeleted)
                 colors = colors.Where(c => c.Deleted == false);
@@ -35,6 +37,14 @@ namespace DefaultWebApplication.Pages.Color
                         ColorTagName = color.TagName,
                         ColorRgbCode = color.RgbCode,
                         ColorDeleted = color.Deleted,
+                        ColorDetailedViewModel = new ColorDetailedViewModel
+                        {
+                            ColorId = color.ColorId,
+                            ColorName = color.Name,
+                            ColorRgbCode = color.RgbCode,
+                            ColorTagName = color.TagName,
+                            ItemModels = color.ItemList.ConvertToSummaryModels()
+                        }
                     });
         }
     }

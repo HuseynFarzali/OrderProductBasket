@@ -1,10 +1,8 @@
 ﻿
-— Optimize item-add and item-main by adding 'include' functionality to item-repository
-— Complete crud for all entities
-— Correctize route parameter id values:int
+— # Exception is expected at the usage of extension method 'ConvertToSummaryModels' second overload (basketitem.item should be included from the context) #
+— Apply authentication using cookies on the code without the use of Core.Identity framework
 — Apply Authorization to admin page
 — Implement email service
 — Implement order service
 — Optimize partial views
-— Intergate modal crud
 — Implement entity photo property kept in database

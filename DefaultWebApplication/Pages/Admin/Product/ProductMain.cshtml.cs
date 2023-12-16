@@ -1,3 +1,5 @@
+using DefaultWebApplication.Extensions;
+using DefaultWebApplication.Models.View_Models.Detailed_Models;
 using DefaultWebApplication.Models.View_Models.Summary_Models;
 using DefaultWebApplication.Services.Repositories.Main_Model_Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +24,7 @@ namespace DefaultWebApplication.Pages.Product
 
         public async Task OnGet(bool showDeleted)
         {
-            var products = await _productRepository.GetEntityCollection(p => true);
+            var products = await _productRepository.GetEntityCollection(p => true, true);
 
             if (!showDeleted)
                 products = products.Where(p => p.Deleted == false);
@@ -36,6 +38,15 @@ namespace DefaultWebApplication.Pages.Product
                         ProductPrice = product.Price,
                         ProductTagName = product.TagName,
                         ProductDeleted = product.Deleted,
+                        ProductDetailedViewModel = new ProductDetailedViewModel
+                        {
+                            ProductId = product.ProductId,
+                            ProductName = product.Name,
+                            ProductPrice = product.Price,
+                            ProductTagName = product.TagName,
+                            ProductRating = product.Rating,
+                            ItemModels = product.ItemList.ConvertToSummaryModels()
+                        }
                     });
         }       
     }

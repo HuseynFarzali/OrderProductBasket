@@ -1,3 +1,5 @@
+using DefaultWebApplication.Extensions;
+using DefaultWebApplication.Models.View_Models.Detailed_Models;
 using DefaultWebApplication.Models.View_Models.Summary_Models;
 using DefaultWebApplication.Services.Repositories.Main_Model_Repositories;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -20,7 +22,7 @@ namespace DefaultWebApplication.Pages.Sizes
 
         public async Task OnGet(bool showDeleted)
         {
-            var sizes = await _repository.GetEntityCollection(s => true);
+            var sizes = await _repository.GetEntityCollection(s => true, true);
 
             if (!showDeleted)
                 sizes = sizes.Where(s => s.Deleted == false);
@@ -33,6 +35,13 @@ namespace DefaultWebApplication.Pages.Sizes
                         SizeName = size.Name,
                         SizeTagName = size.TagName,
                         SizeDeleted = size.Deleted,
+                        SizeDetailedViewModel = new SizeDetailedViewModel
+                        {
+                            SizeId = size.SizeId,
+                            SizeName = size.Name,
+                            SizeTagName = size.TagName,
+                            ItemModels = size.ItemList.ConvertToSummaryModels()
+                        }
                     });
         }
     }

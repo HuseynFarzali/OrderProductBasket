@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace DefaultWebApplication.Models.View_Models.Detailed_Models
 {
-    public class OrderDetailedViewModel
+    public class OrderDetailedViewModel : DetailedViewModel
     {
         public int OrderId { get; set; }
         public string OrderNumber { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public decimal OrderTotalPrice { get; set; }
-        public IList<ItemSummaryViewModel> ItemModels { get; set; }
+        public List<ItemSummaryViewModel> ItemModels { get; set; }
     }
 }

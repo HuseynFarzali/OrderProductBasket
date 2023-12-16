@@ -14,7 +14,7 @@ namespace DefaultWebApplication.Models.Domain_Models.Main_Models
         #endregion
 
         #region External Dependencies
-        public IList<BasketItem>  BasketItemList { get; set; }
+        public List<BasketItem>  BasketItemList { get; set; }
         #endregion
     }
 }

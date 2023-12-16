@@ -29,7 +29,7 @@ namespace DefaultWebApplication.Pages.User
                 return Page();
 
             await _repository.CreateUser(CreateCommand);
-            return RedirectToPage();
+            return RedirectToPage("usermain");
         }
     }
 }

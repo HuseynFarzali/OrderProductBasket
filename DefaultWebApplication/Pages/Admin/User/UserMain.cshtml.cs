@@ -1,3 +1,5 @@
+using DefaultWebApplication.Extensions;
+using DefaultWebApplication.Models.View_Models.Detailed_Models;
 using DefaultWebApplication.Models.View_Models.Summary_Models;
 using DefaultWebApplication.Services.Repositories.Main_Model_Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +24,7 @@ namespace DefaultWebApplication.Pages.User
 
         public async Task OnGet(bool showDeleted)
         {
-            var users = await _repository.GetEntityCollection(u => true);
+            var users = await _repository.GetEntityCollection(u => true, true);
 
             if (!showDeleted)
                 users = users.Where(u => u.Deleted == false);
@@ -38,6 +40,17 @@ namespace DefaultWebApplication.Pages.User
                         UserDeleted = user.Deleted,
                         UserSurname = user.Surname,
                         UserTagName = user.TagName,
+                        UserDetailedViewModel = new UserDetailedViewModel
+                        {
+                            UserId = user.UserId,
+                            UserName = user.Name,
+                            UserSurname = user.Surname,
+                            UserEmail = user.Email,
+                            UserAge = user.Age,
+                            UserPassword = user.Password,
+                            UserTagName = user.TagName,
+                            ItemModels = user.BasketItemList.ConvertToSummaryModels()
+                        }
                     });
             }
         }

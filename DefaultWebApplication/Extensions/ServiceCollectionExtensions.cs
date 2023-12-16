@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using DefaultWebApplication.Models.Setting_Models;
 using Microsoft.EntityFrameworkCore;
 using DefaultWebApplication.Database;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using DefaultWebApplication.Models.Domain_Models.Main_Models;
 
 namespace DefaultWebApplication.Extensions
 {
@@ -77,6 +79,15 @@ namespace DefaultWebApplication.Extensions
             {
                 options.UseNpgsql(_connString);
             });
+        }
+
+        public static void AddAuthorizationService<TDatabaseContext, TIdentityUser>(
+            this IServiceCollection services,
+            bool requireConfirmedAccount) where TIdentityUser : class where TDatabaseContext : DbContext
+        {
+            services.AddDefaultIdentity<TIdentityUser>(options =>
+                options.SignIn.RequireConfirmedAccount = requireConfirmedAccount)
+              .AddEntityFrameworkStores<TDatabaseContext>();
         }
     }
 }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace DefaultWebApplication.Models.View_Models.Detailed_Models
 {
-    public class ColorDetailedViewModel
+    public class ColorDetailedViewModel : DetailedViewModel
     {
         public int ColorId { get; set; }
         public string ColorName { get; set; }
         public string ColorTagName { get; set; }
         public string ColorRgbCode { get; set; }
-        public IList<ItemSummaryViewModel> ItemModels { get; set; }
+        public List<ItemSummaryViewModel> ItemModels { get; set; }
     }
 }

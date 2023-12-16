@@ -2,7 +2,7 @@
 
 namespace DefaultWebApplication.Models.View_Models.Detailed_Models
 {
-    public class ItemDetailedViewModel
+    public class ItemDetailedViewModel : DetailedViewModel
     {
         public int ItemId { get; set; }
         public string ItemName { get; set; }

@@ -21,7 +21,7 @@ namespace DefaultWebApplication.Attributes
                 return false;
             }
 
-            if (password.Length != RequiredLength)
+            if (password.Length < RequiredLength)
                 return false;
 
             if (CapitalLetterRequired)
@@ -40,9 +40,9 @@ namespace DefaultWebApplication.Attributes
             return true;
         }
 
-        public override string FormatErrorMessage(string name)
+        public override string FormatErrorMessage(string name = "name")
         {
-            return string.Format(ErrorMessage, name, $"[lengthRequired:{RequiredLength} & capitalLetterRequired:{CapitalLetterRequired}]");
+            return base.FormatErrorMessage(name);
         }
     }
 

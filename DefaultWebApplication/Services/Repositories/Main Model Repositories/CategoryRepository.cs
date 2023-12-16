@@ -52,11 +52,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Category>> GetEntityCollection(Func<Category, bool> criteria)
+        public async Task<IEnumerable<Category>> GetEntityCollection(
+            Func<Category, bool> criteria, bool includeItemList = false)
         {
-            var matchingCategories = await _context.Categories.ToListAsync();
-            matchingCategories = matchingCategories.Where(criteria).ToList();
-            return matchingCategories;
+            var matchingCategoriesQueryable = _context.Categories.AsQueryable();
+
+            if (includeItemList is true)
+                matchingCategoriesQueryable = matchingCategoriesQueryable.Include(c => c.ItemList);
+
+            var matchingCategories = await matchingCategoriesQueryable.ToListAsync();
+            return matchingCategories.Where(criteria);
         }
 
         public async Task<Category> UpdateEntity(Func<Category, bool> criteriaUnique, CategoryCommandModel command)
@@ -88,14 +93,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await DeleteEntityCollection(category => category.CategoryId == categoryId);
         }
 
-        public async Task<Category> GetCategoryById(int categoryId)
+        public async Task<Category> GetCategoryById(int categoryId, bool includeItemList = false)
         {
-            var enumerableCategoryList = await GetEntityCollection(category => category.CategoryId == categoryId);
+            var enumerableCategoryList = await GetEntityCollection(
+                category => category.CategoryId == categoryId, includeItemList);
             return enumerableCategoryList.First();
         }
 
         public async Task<Category> UpdateCategoryById(int categoryId, CategoryCommandModel command)
             => await UpdateEntity(category => category.CategoryId == categoryId, command);
+
         #endregion
 
         #region Helper Methods

@@ -7,4 +7,10 @@
 
 <div class="text-center">
     <a asp-page="adminpanel">Admin Panel</a>
+
+    <h4>Current Logged In User:</h4>
+    <p>Email: @Model.CurrentUser?.Email</p>
+    <p>Password: @Model.CurrentUser?.Password</p>
+    <p>Full Name: @Model.CurrentUser?.Name @Model.CurrentUser?.Surname</p>
+    <p>Admin: @Model.HasAdminAccess</p>
 </div>

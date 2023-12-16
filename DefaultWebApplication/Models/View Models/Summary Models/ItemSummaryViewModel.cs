@@ -1,4 +1,6 @@
-﻿namespace DefaultWebApplication.Models.View_Models.Summary_Models
+﻿using DefaultWebApplication.Models.View_Models.Detailed_Models;
+
+namespace DefaultWebApplication.Models.View_Models.Summary_Models
 {
     public class ItemSummaryViewModel
     {
@@ -9,5 +11,6 @@
         public string ColorName { get; set; }
         public string CategoryName { get; set; }
         public bool ItemDeleted { get; set; }
+        public ItemDetailedViewModel ItemDetailedViewModel { get; set; }
     }
 }

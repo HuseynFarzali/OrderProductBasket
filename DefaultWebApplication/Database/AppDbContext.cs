@@ -1,10 +1,12 @@
-﻿using DefaultWebApplication.Models.Domain_Models.Bridge_Models;
+﻿using DefaultWebApplication.Models.Account_Models;
+using DefaultWebApplication.Models.Domain_Models.Bridge_Models;
 using DefaultWebApplication.Models.Domain_Models.Main_Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DefaultWebApplication.Database
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : DbContext /*IdentityDbContext<Models.Account_Models.AuthUser>*/
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

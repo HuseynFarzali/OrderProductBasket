@@ -53,11 +53,16 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Color>> GetEntityCollection(Func<Color, bool> criteria)
+        public async Task<IEnumerable<Color>> GetEntityCollection(
+            Func<Color, bool> criteria, bool includeItemList = false)
         {
-            var matchingColors = await _context.Colors.ToListAsync();
-            matchingColors = matchingColors.Where(criteria).ToList();
-            return matchingColors;
+            var matchingColorsQueryable = _context.Colors.AsQueryable();
+
+            if (includeItemList is true)
+                matchingColorsQueryable = matchingColorsQueryable.Include(c => c.ItemList);
+
+            var matchingColors = await matchingColorsQueryable.ToListAsync();
+            return matchingColors.Where(criteria);
         }
 
         public async Task<Color> UpdateEntity(Func<Color, bool> criteriaUnique, ColorCommandModel command)
@@ -90,9 +95,10 @@ namespace DefaultWebApplication.Services.Repositories.Main_Model_Repositories
             await DeleteEntityCollection(color => color.ColorId == colorId);
         }
 
-        public async Task<Color> GetColorById(int colorId)
+        public async Task<Color> GetColorById(int colorId, bool includeItemList = false)
         {
-            var enumerableColorList = await GetEntityCollection(color => color.ColorId == colorId);
+            var enumerableColorList = await GetEntityCollection(
+                color => color.ColorId == colorId, includeItemList);
             return enumerableColorList.First();
         }
 
